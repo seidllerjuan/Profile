@@ -20,6 +20,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -45,6 +46,10 @@ fun PerfilMultiservicios() {
         mutableStateOf(
             "En Multiservicios Castan ofrecemos todo tipo de servicios para el mantenimiento y reparación del hogar en Tampico, Tamaulipas."
         )
+    }
+
+    var titulo by rememberSaveable {
+        mutableStateOf("Multiservicios Castan: Soluciones para tu hogar en Tampico")
     }
 
     Column(
@@ -84,7 +89,7 @@ fun PerfilMultiservicios() {
         Spacer(modifier = Modifier.height(16.dp))
 
         Text(
-            text = "Multiservicios Castan: Soluciones para tu hogar en Tampico",
+            text = titulo,
             style = MaterialTheme.typography.headlineSmall,
             color = Color.White,
             textAlign = TextAlign.Center,
@@ -140,5 +145,13 @@ fun PerfilMultiservicios() {
             modifier = Modifier.padding(horizontal = 16.dp)
         )
         Spacer(modifier = Modifier.height(24.dp))
+        TextField(
+            value = titulo,
+            onValueChange = { titulo = it },
+            label = { Text("Editar título") },
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp)
+        )
     }
 }
